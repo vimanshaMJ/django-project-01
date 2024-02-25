@@ -10,9 +10,14 @@ def index(response, name):
     return HttpResponse("<h1> %s </h1> <br> <p> %s </p>" % (ls.name, str(item.text)))
 
 
-# filter - check an specific element 
-
-# >>> t.filter(name__startswith="Vi")
-# <QuerySet [<ToDoList: Vimsnsha's List>]>
-# >>> t.filter(name__startswith="tim")
+# >>> del_object = t.get(id=1)
+# >>> del_object.delete()
+# (2, {'main.Item': 1, 'main.ToDoList': 1})
+# >>> t.filter(id=2)
 # <QuerySet []>
+# >>> t.all()
+# <QuerySet []>
+# >>> t1 = ToDoList(name="First List")
+# >>> t1.save()
+# >>> t2 = ToDoList(name="Second List")
+# >>> t2.save()
