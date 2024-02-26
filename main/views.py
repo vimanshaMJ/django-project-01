@@ -10,3 +10,5 @@ def index(response, name):
     return HttpResponse("<h1> %s </h1> <br> <p> %s </p>" % (ls.name, str(item.text)))
 
 
+def home(response):
+    pass
