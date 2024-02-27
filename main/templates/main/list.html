@@ -13,3 +13,21 @@
 </ul>
 
 {% endblock %}
+
+<!-- 
+>>> from main.models import ToDoList
+>>> ls = ToDoList.objects.get(id=2)
+>>> ls
+<ToDoList: First List>
+>>> ls.item_set.all()
+<QuerySet []>
+>>> ls.item_set.create(text="First Item", complete=False)
+<Item: First Item>
+>>> ls.item_set.create(text="Second Item", complete=False)
+<Item: Second Item>
+>>> ls.item_set.create(text="Third Item", complete=False)
+<Item: Third Item>
+>>> ls.item_set.all()
+<QuerySet [<Item: First Item>, <Item: Second Item>, <Item: Third Item>]>
+>>> exit() 
+-->
