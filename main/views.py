@@ -23,7 +23,12 @@ def index(response, id):
 
 
         elif response.POST.get("newItem"):
-            pass
+            txt = response.POST.get("new")
+
+            if len(txt) > 2:
+                ls.item_set.create(text=txt, complete=False)
+            else:
+                print("Invalid")
             
 
 def home(response):
