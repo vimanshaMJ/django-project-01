@@ -3,7 +3,7 @@
 <!-- content -->
 {% block content %} Create Page
 <form method="post" action="/create/">
-  {{form.as_p}}
+  {% csrf_token %} {{form.as_p}}
   <button type="submit" name="save">Create New</button>
 </form>
 
