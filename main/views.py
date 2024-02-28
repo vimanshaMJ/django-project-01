@@ -7,10 +7,28 @@ from .models import ToDoList, Item
 # Create your views here.
 def index(response, id):
     ls = ToDoList.objects.get(id = id)
-    return render(response, "main/list.html", {"ls": ls})
+
+    # whenever you get a POST request from the server, all the information in the form in list.html will be passed to our view
+    # we gonna get a dictionary like this: {"save": ["save"], "c1": ["clicked"]}  => c1 is the name of the input field, clicked is the value of the input field
+    if response.method == "POST":
+        print(response.POST)
+        if response.POST.get("save"):
+            for item in ls.item_set.all():
+                if response.POST.get("c" + str(item.id)) == "clicked":
+                    item.complete = True
+                else:
+                    item.complete = False
+
+                item.save()
+
+
+        elif response.POST.get("newItem"):
+            pass
+            
 
 def home(response):
     return render(response, "main/home.html", {})
+
 
 def create(response):
     if response.method == "POST":
