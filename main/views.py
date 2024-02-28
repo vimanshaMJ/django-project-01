@@ -13,5 +13,14 @@ def home(response):
     return render(response, "main/home.html", {})
 
 def create(response):
+    if response.method == "POST":
+        form = CreateNewList(response.POST)  # take all the data from the form and put it in the form variable
+
+        if form.is_valid():
+            n = form.cleaned_data["name"]  # access that data by using it like a dictionary, "name" is related to the name of the input field
+            t = ToDoList(name = n) 
+            t.save()
+            # cleaned_data - cleanup the data un-encrypted
+
     form = CreateNewList()
     return render(response, "main/create.html", {"form": form})
