@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .form import CreateNewList
 
 from .models import ToDoList, Item
 
@@ -12,4 +13,5 @@ def home(response):
     return render(response, "main/home.html", {})
 
 def create(response):
-    return render(response, "main/create.html", {})
+    form = CreateNewList()
+    return render(response, "main/create.html", {"form": form})
