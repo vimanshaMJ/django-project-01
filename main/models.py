@@ -1,7 +1,9 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class ToDoList(models.Model):
+    user = models.ForeignKey(User, on_delete = models.CASCADE)
     name = models.CharField(max_length = 200)
 
     def __str__(self):
@@ -17,6 +19,22 @@ class Item(models.Model):
     def __str__(self):
         return self.text
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # python manage.py makemigrations main
 # making migrations is similar to like adding something to staging area(save changes and apply changes to project)
 #     python manage.py migrate - apply changes to project
@@ -42,3 +60,7 @@ class Item(models.Model):
 #     <Item: Go to the mall>
 #     >>> t.item_set.all()
 #     <QuerySet [<Item: Go to the mall>]>
+    
+
+
+## To delete everything in database: delete every files in migration folder except __init__.py
