@@ -42,11 +42,16 @@ def create(response):
 
         if form.is_valid():
             n = form.cleaned_data["name"]  # access that data by using it like a dictionary, "name" is related to the name of the input field
-            t = ToDoList(name = n) 
+            t = ToDoList(name = n)
             t.save()
+            response.user.todolist.add(t)  # add the list to the user's todolist
             # cleaned_data - cleanup the data un-encrypted
 
         return HttpResponseRedirect("/%i" %t.id)
 
     form = CreateNewList()
     return render(response, "main/create.html", {"form": form})
+
+
+def view(response):
+    return render(response, "main/view.html", {})
